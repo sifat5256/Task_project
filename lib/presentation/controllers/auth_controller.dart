@@ -17,8 +17,8 @@ class AuthController extends GetxController {
     this._getCachedUserUseCase,
   );
 
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  late final TextEditingController usernameController;
+  late final TextEditingController passwordController;
 
   final isLoading = false.obs;
   final errorMessage = ''.obs;
@@ -27,6 +27,8 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    usernameController = TextEditingController();
+    passwordController = TextEditingController();
     loadCachedUser();
   }
 

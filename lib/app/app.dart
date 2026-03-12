@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_project/app/routes/app_pages.dart';
 import 'package:task_project/app/routes/app_routes.dart';
@@ -18,15 +19,20 @@ class App extends StatelessWidget {
       ThemeController(Get.find<LocalStorageService>()),
     );
 
-    return Obx(
-      () => GetMaterialApp(
-        title: 'Task Project',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: themeController.themeMode,
-        initialRoute: AppRoutes.splash,
-        getPages: AppPages.pages,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => Obx(
+        () => GetMaterialApp(
+          title: 'Task Project',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeController.themeMode,
+          initialRoute: AppRoutes.splash,
+          getPages: AppPages.pages,
+        ),
       ),
     );
   }
@@ -37,25 +43,28 @@ class App extends StatelessWidget {
         return Material(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(24),
+              padding: EdgeInsets.all(24.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.warning_amber_rounded,
-                    size: 64,
+                    size: 64.sp,
                     color: Colors.orange,
                   ),
-                  const SizedBox(height: 16),
-                  const Text(
+                  SizedBox(height: 16.h),
+                  Text(
                     'Something went wrong',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Text(
                     details.exceptionAsString(),
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                    style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                     textAlign: TextAlign.center,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,

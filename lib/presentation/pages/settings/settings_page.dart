@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_project/core/theme/app_theme.dart';
 import 'package:task_project/domain/entities/user_entity.dart';
@@ -30,7 +31,7 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
+        padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 100.h),
         children: [
           // ─── User Info Card ──────────────────────────
           Obx(() {
@@ -42,7 +43,7 @@ class SettingsPage extends StatelessWidget {
               child: _UserInfoCard(user: user),
             );
           }),
-          const SizedBox(height: 24),
+          SizedBox(height: 24.h),
 
           // ─── Theme Toggle ────────────────────────────
           FadeInRight(
@@ -66,9 +67,9 @@ class SettingsPage extends StatelessWidget {
                         BorderRadius.circular(AppTheme.radiusLarge),
                     onTap: () => themeController.toggleTheme(),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 16,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 16.h,
                       ),
                       child: Row(
                         children: [
@@ -93,10 +94,10 @@ class SettingsPage extends StatelessWidget {
                               color: isDark
                                   ? const Color(0xFF94A3B8)
                                   : const Color(0xFFF59E0B),
-                              size: 26,
+                              size: 26.sp,
                             ),
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16.w),
                           // Text
                           Expanded(
                             child: Column(
@@ -108,7 +109,7 @@ class SettingsPage extends StatelessWidget {
                                       .textTheme
                                       .titleMedium,
                                 ),
-                                const SizedBox(height: 2),
+                                SizedBox(height: 2.h),
                                 Text(
                                   isDark
                                       ? 'Easier on the eyes'
@@ -129,7 +130,7 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
 
           // ─── App Info ────────────────────────────────
           FadeInRight(
@@ -146,21 +147,21 @@ class SettingsPage extends StatelessWidget {
                 boxShadow: [AppTheme.softShadow],
               ),
               child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 8,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                  vertical: 8.h,
                 ),
                 leading: Container(
-                  width: 44,
-                  height: 44,
+                  width: 44.w,
+                  height: 44.w,
                   decoration: BoxDecoration(
                     gradient: AppTheme.primaryGradient,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.info_outline_rounded,
                     color: Colors.white,
-                    size: 22,
+                    size: 22.sp,
                   ),
                 ),
                 title: Text(
@@ -174,7 +175,7 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.h),
 
           // ─── Logout Button ───────────────────────────
           FadeInUp(
@@ -185,7 +186,7 @@ class SettingsPage extends StatelessWidget {
               onTap: () => _showLogoutDialog(context, authController),
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: 16.h),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppTheme.radiusLarge),
                   border: Border.all(
@@ -199,15 +200,15 @@ class SettingsPage extends StatelessWidget {
                     Icon(
                       Icons.logout_rounded,
                       color: colorScheme.error,
-                      size: 20,
+                      size: 20.sp,
                     ),
-                    const SizedBox(width: 8),
+                    SizedBox(width: 8.w),
                     Text(
                       'Logout',
                       style: TextStyle(
                         color: colorScheme.error,
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ],
@@ -231,19 +232,19 @@ class SettingsPage extends StatelessWidget {
         title: Row(
           children: [
             Container(
-              width: 40,
-              height: 40,
+              width: 40.w,
+              height: 40.w,
               decoration: BoxDecoration(
                 color: colorScheme.error.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
               ),
               child: Icon(
                 Icons.logout_rounded,
                 color: colorScheme.error,
-                size: 20,
+                size: 20.sp,
               ),
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             const Text('Logout'),
           ],
         ),
@@ -282,7 +283,7 @@ class _UserInfoCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(AppTheme.radiusXL),
@@ -297,13 +298,13 @@ class _UserInfoCard extends StatelessWidget {
           Hero(
             tag: 'user_avatar',
             child: Container(
-              padding: const EdgeInsets.all(3),
+              padding: EdgeInsets.all(3.w),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: AppTheme.primaryGradient,
               ),
               child: Container(
-                padding: const EdgeInsets.all(2),
+                padding: EdgeInsets.all(2.w),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: colorScheme.surface,
@@ -311,24 +312,24 @@ class _UserInfoCard extends StatelessWidget {
                 child: ClipOval(
                   child: CachedNetworkImage(
                     imageUrl: user.image,
-                    width: 80,
-                    height: 80,
+                    width: 80.w,
+                    height: 80.w,
                     fit: BoxFit.cover,
                     placeholder: (_, __) => Container(
-                      width: 80,
-                      height: 80,
+                      width: 80.w,
+                      height: 80.w,
                       color: colorScheme.surfaceContainerHighest,
                       child: const Center(
                         child: CircularProgressIndicator(strokeWidth: 2),
                       ),
                     ),
                     errorWidget: (_, __, ___) => Container(
-                      width: 80,
-                      height: 80,
+                      width: 80.w,
+                      height: 80.w,
                       color: colorScheme.surfaceContainerHighest,
                       child: Icon(
                         Icons.person,
-                        size: 40,
+                        size: 40.sp,
                         color: colorScheme.onSurfaceVariant,
                       ),
                     ),
@@ -337,14 +338,14 @@ class _UserInfoCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
 
           // Name
           Text(
             '${user.firstName} ${user.lastName}',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
 
           // Username with gradient
           ShaderMask(
@@ -352,14 +353,14 @@ class _UserInfoCard extends StatelessWidget {
                 AppTheme.primaryGradient.createShader(bounds),
             child: Text(
               '@${user.username}',
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
             ),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
 
           // Email
           Text(
@@ -382,11 +383,11 @@ class _ThemeToggle extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
-      width: 56,
-      height: 30,
-      padding: const EdgeInsets.all(3),
+      width: 56.w,
+      height: 30.h,
+      padding: EdgeInsets.all(3.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15.r),
         gradient: isDark
             ? const LinearGradient(
                 colors: [Color(0xFF1E293B), Color(0xFF475569)],
@@ -400,8 +401,8 @@ class _ThemeToggle extends StatelessWidget {
         curve: Curves.easeInOut,
         alignment: isDark ? Alignment.centerRight : Alignment.centerLeft,
         child: Container(
-          width: 24,
-          height: 24,
+          width: 24.w,
+          height: 24.w,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
@@ -412,7 +413,7 @@ class _ThemeToggle extends StatelessWidget {
               child: Icon(
                 isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
                 key: ValueKey(isDark),
-                size: 14,
+                size: 14.sp,
                 color: isDark ? const Color(0xFF475569) : const Color(0xFFF59E0B),
               ),
             ),

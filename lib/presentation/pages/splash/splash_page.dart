@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_project/app/routes/app_routes.dart';
@@ -86,55 +87,55 @@ class _SplashPageState extends State<SplashPage>
               child: FadeTransition(
                 opacity: _fadeAnim,
                 child: Container(
-                  width: 100,
-                  height: 100,
+                  width: 100.w,
+                  height: 100.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(AppTheme.radiusXL),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withValues(alpha: 0.15),
-                        blurRadius: 32,
-                        offset: const Offset(0, 8),
+                        blurRadius: 32.r,
+                        offset: Offset(0, 8.h),
                       ),
                     ],
                   ),
                   child: Icon(
                     Icons.shopping_bag_rounded,
-                    size: 48,
+                    size: 48.sp,
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: 24.h),
             FadeTransition(
               opacity: _fadeAnim,
               child: Text(
                 'Task Project',
                 style: GoogleFonts.poppins(
-                  fontSize: 28,
+                  fontSize: 28.sp,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             SizedBox(
-              height: 20,
+              height: 20.h,
               child: Text(
                 _visibleTagline,
-                style: GoogleFonts.inter(
-                  fontSize: 14,
+                style: GoogleFonts.poppins(
+                  fontSize: 14.sp,
                   color: Colors.white.withValues(alpha: 0.8),
                 ),
               ),
             ),
-            const SizedBox(height: 48),
-            const SizedBox(
-              width: 24,
-              height: 24,
-              child: CircularProgressIndicator(
+            SizedBox(height: 48.h),
+            SizedBox(
+              width: 24.w,
+              height: 24.w,
+              child: const CircularProgressIndicator(
                 strokeWidth: 2,
                 valueColor: AlwaysStoppedAnimation(Colors.white),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_project/core/theme/app_theme.dart';
 
@@ -35,12 +36,12 @@ class _GradientButtonState extends State<GradientButton> {
         duration: const Duration(milliseconds: 100),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          width: widget.isLoading ? 56 : double.infinity,
-          height: 56,
+          width: widget.isLoading ? 56.w : double.infinity,
+          height: 56.h,
           decoration: BoxDecoration(
             gradient: AppTheme.primaryGradient,
             borderRadius: BorderRadius.circular(
-              widget.isLoading ? 28 : AppTheme.radiusLarge,
+              widget.isLoading ? 28.r : AppTheme.radiusLarge,
             ),
             boxShadow: [AppTheme.primaryGlow],
           ),
@@ -48,11 +49,11 @@ class _GradientButtonState extends State<GradientButton> {
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 200),
               child: widget.isLoading
-                  ? const SizedBox(
-                      key: ValueKey('loader'),
-                      width: 24,
-                      height: 24,
-                      child: CircularProgressIndicator(
+                  ? SizedBox(
+                      key: const ValueKey('loader'),
+                      width: 24.w,
+                      height: 24.w,
+                      child: const CircularProgressIndicator(
                         strokeWidth: 2.5,
                         valueColor: AlwaysStoppedAnimation(Colors.white),
                       ),
@@ -61,7 +62,7 @@ class _GradientButtonState extends State<GradientButton> {
                       widget.text,
                       key: const ValueKey('text'),
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),

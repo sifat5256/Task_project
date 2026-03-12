@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_project/core/theme/app_theme.dart';
 import 'package:task_project/domain/entities/product_entity.dart';
@@ -52,23 +53,23 @@ class _ProductDetailPageState extends State<ProductDetailPage>
         slivers: [
           // ─── Collapsing Image App Bar ──────────────────
           SliverAppBar(
-            expandedHeight: 300,
+            expandedHeight: 300.h,
             pinned: true,
             stretch: true,
             backgroundColor: colorScheme.surface,
             leading: Padding(
-              padding: const EdgeInsets.all(8),
+              padding: EdgeInsets.all(8.w),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.black.withValues(alpha: 0.3),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(12.r),
                     ),
                     child: IconButton(
-                      icon: const Icon(Icons.arrow_back_ios_new, size: 18),
+                      icon: Icon(Icons.arrow_back_ios_new, size: 18.sp),
                       color: Colors.white,
                       onPressed: () => Get.back(),
                     ),
@@ -90,7 +91,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                       ),
                       errorWidget: (_, __, ___) => Container(
                         color: colorScheme.surfaceContainerHighest,
-                        child: const Icon(Icons.broken_image, size: 48),
+                        child: Icon(Icons.broken_image, size: 48.sp),
                       ),
                     ),
                   ),
@@ -111,32 +112,32 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                   ),
                   // Price badge
                   Positioned(
-                    bottom: 16,
-                    right: 16,
+                    bottom: 16.h,
+                    right: 16.w,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                       child: BackdropFilter(
                         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                         child: AnimatedBuilder(
                           animation: _priceAnimation,
                           builder: (context, child) => Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 8,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 16.w,
+                              vertical: 8.h,
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white.withValues(alpha: 0.2),
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(16.r),
                               border: Border.all(
                                 color: Colors.white.withValues(alpha: 0.3),
                               ),
                             ),
                             child: Text(
                               '\$${_priceAnimation.value.toStringAsFixed(2)}',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
-                                fontSize: 22,
+                                fontSize: 22.sp,
                               ),
                             ),
                           ),
@@ -152,7 +153,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
           // ─── Content ──────────────────────────────────
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -166,7 +167,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12.h),
 
                   // Brand & Category row
                   FadeInUp(
@@ -178,10 +179,10 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                         if (product.brand.isNotEmpty) ...[
                           Icon(
                             Icons.storefront_outlined,
-                            size: 16,
+                            size: 16.sp,
                             color: colorScheme.onSurfaceVariant,
                           ),
-                          const SizedBox(width: 6),
+                          SizedBox(width: 6.w),
                           Text(
                             product.brand,
                             style:
@@ -189,22 +190,22 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                                       fontWeight: FontWeight.w500,
                                     ),
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16.w),
                         ],
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 5,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12.w,
+                            vertical: 5.h,
                           ),
                           decoration: BoxDecoration(
                             gradient: AppTheme.primaryGradient,
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(20.r),
                           ),
                           child: Text(
                             product.category,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 12.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -212,7 +213,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                       ],
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24.h),
 
                   // Divider
                   FadeInUp(
@@ -232,7 +233,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24.h),
 
                   // Description header
                   FadeInUp(
@@ -242,14 +243,14 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                     child: Row(
                       children: [
                         Container(
-                          width: 4,
-                          height: 20,
+                          width: 4.w,
+                          height: 20.h,
                           decoration: BoxDecoration(
                             gradient: AppTheme.primaryGradient,
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(2.r),
                           ),
                         ),
-                        const SizedBox(width: 8),
+                        SizedBox(width: 8.w),
                         Text(
                           'Description',
                           style: Theme.of(context).textTheme.titleLarge,
@@ -257,7 +258,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                       ],
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12.h),
 
                   // Description body
                   FadeInUp(
@@ -266,7 +267,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                     from: 20,
                     child: Container(
                       width: double.infinity,
-                      padding: const EdgeInsets.all(16),
+                      padding: EdgeInsets.all(16.w),
                       decoration: BoxDecoration(
                         color: colorScheme.surface,
                         borderRadius:
@@ -285,7 +286,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                       ),
                     ),
                   ),
-                  const SizedBox(height: 100),
+                  SizedBox(height: 100.h),
                 ],
               ),
             ),

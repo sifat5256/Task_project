@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_project/app/routes/app_routes.dart';
 import 'package:task_project/core/theme/app_theme.dart';
@@ -52,7 +53,7 @@ class PostsPage extends StatelessWidget {
           onRefresh: controller.fetchPosts,
           child: ListView.builder(
             controller: controller.scrollController,
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
+            padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 100.h),
             itemCount: controller.posts.length + 1,
             itemBuilder: (context, index) {
               if (index == controller.posts.length) {
@@ -111,7 +112,7 @@ class _PostCardState extends State<_PostCard> {
         scale: _pressed ? 0.97 : 1.0,
         duration: const Duration(milliseconds: 150),
         child: Container(
-          margin: const EdgeInsets.only(bottom: 12),
+          margin: EdgeInsets.only(bottom: 12.h),
           decoration: BoxDecoration(
             color: colorScheme.surface,
             borderRadius: BorderRadius.circular(AppTheme.radiusLarge),
@@ -125,17 +126,17 @@ class _PostCardState extends State<_PostCard> {
               children: [
                 // Left accent border
                 Container(
-                  width: 4,
+                  width: 4.w,
                   decoration: BoxDecoration(
                     gradient: AppTheme.primaryGradient,
-                    borderRadius: const BorderRadius.horizontal(
+                    borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(AppTheme.radiusLarge),
                     ),
                   ),
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: EdgeInsets.all(16.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -145,35 +146,35 @@ class _PostCardState extends State<_PostCard> {
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         Text(
                           widget.post.body,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        const SizedBox(height: 12),
+                        SizedBox(height: 12.h),
                         Row(
                           children: [
                             // Tags
                             if (widget.post.tags.isNotEmpty)
                               ...widget.post.tags.take(2).map(
                                     (tag) => Container(
-                                      margin: const EdgeInsets.only(right: 8),
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                        vertical: 4,
+                                      margin: EdgeInsets.only(right: 8.w),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 10.w,
+                                        vertical: 4.h,
                                       ),
                                       decoration: BoxDecoration(
                                         color: colorScheme.primary
                                             .withValues(alpha: 0.08),
                                         borderRadius:
-                                            BorderRadius.circular(12),
+                                            BorderRadius.circular(12.r),
                                       ),
                                       child: Text(
                                         tag,
                                         style: TextStyle(
-                                          fontSize: 11,
+                                          fontSize: 11.sp,
                                           fontWeight: FontWeight.w500,
                                           color: colorScheme.primary,
                                         ),
@@ -184,28 +185,28 @@ class _PostCardState extends State<_PostCard> {
                             // Reactions
                             Icon(
                               Icons.thumb_up_outlined,
-                              size: 14,
+                              size: 14.sp,
                               color: colorScheme.primary,
                             ),
-                            const SizedBox(width: 4),
+                            SizedBox(width: 4.w),
                             Text(
                               '${widget.post.reactions.likes}',
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: colorScheme.onSurfaceVariant,
                               ),
                             ),
-                            const SizedBox(width: 12),
+                            SizedBox(width: 12.w),
                             Icon(
                               Icons.thumb_down_outlined,
-                              size: 14,
+                              size: 14.sp,
                               color: colorScheme.error,
                             ),
-                            const SizedBox(width: 4),
+                            SizedBox(width: 4.w),
                             Text(
                               '${widget.post.reactions.dislikes}',
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: colorScheme.onSurfaceVariant,
                               ),
                             ),
@@ -237,7 +238,7 @@ class _BottomLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     if (hasReachedMax) {
       return Padding(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(24.w),
         child: Center(
           child: Text(
             'All posts loaded',
@@ -248,9 +249,9 @@ class _BottomLoader extends StatelessWidget {
     }
 
     if (isPaginating) {
-      return const Padding(
-        padding: EdgeInsets.all(24),
-        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      return Padding(
+        padding: EdgeInsets.all(24.w),
+        child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
       );
     }
 

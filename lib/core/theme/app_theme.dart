@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
@@ -27,21 +28,21 @@ class AppTheme {
   static const _darkBorder = Color(0xFF334155);
 
   // ─── Shared Constants ───────────────────────────────────
-  static const double radiusSmall = 8;
-  static const double radiusMedium = 12;
-  static const double radiusLarge = 16;
-  static const double radiusXL = 24;
+  static double get radiusSmall => 8.r;
+  static double get radiusMedium => 12.r;
+  static double get radiusLarge => 16.r;
+  static double get radiusXL => 24.r;
 
   static BoxShadow get softShadow => BoxShadow(
         color: Colors.black.withValues(alpha: 0.06),
-        blurRadius: 16,
-        offset: const Offset(0, 4),
+        blurRadius: 16.r,
+        offset: Offset(0, 4.h),
       );
 
   static BoxShadow get primaryGlow => BoxShadow(
         color: _lightPrimary.withValues(alpha: 0.3),
-        blurRadius: 16,
-        offset: const Offset(0, 4),
+        blurRadius: 16.r,
+        offset: Offset(0, 4.h),
       );
 
   static LinearGradient get primaryGradient => const LinearGradient(
@@ -49,7 +50,7 @@ class AppTheme {
       );
 
   // ─── Light Theme ────────────────────────────────────────
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData get lightTheme => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     scaffoldBackgroundColor: _lightBackground,
@@ -84,7 +85,7 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: _lightSurface,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radiusMedium),
         borderSide: const BorderSide(color: _lightBorder),
@@ -104,7 +105,7 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(double.infinity, 56),
+        minimumSize: Size(double.infinity, 56.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusLarge),
         ),
@@ -118,7 +119,7 @@ class AppTheme {
   );
 
   // ─── Dark Theme ─────────────────────────────────────────
-  static ThemeData darkTheme = ThemeData(
+  static ThemeData get darkTheme => ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: _darkBackground,
@@ -153,7 +154,7 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: _darkSurface,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radiusMedium),
         borderSide: const BorderSide(color: _darkBorder),
@@ -173,7 +174,7 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(double.infinity, 56),
+        minimumSize: Size(double.infinity, 56.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusLarge),
         ),
@@ -190,67 +191,67 @@ class AppTheme {
   static TextTheme _buildTextTheme(Color primary, Color secondary) {
     return TextTheme(
       displayLarge: GoogleFonts.poppins(
-        fontSize: 32,
+        fontSize: 32.sp,
         fontWeight: FontWeight.w700,
         color: primary,
       ),
       headlineLarge: GoogleFonts.poppins(
-        fontSize: 24,
+        fontSize: 24.sp,
         fontWeight: FontWeight.w700,
         color: primary,
       ),
       headlineMedium: GoogleFonts.poppins(
-        fontSize: 20,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
       headlineSmall: GoogleFonts.poppins(
-        fontSize: 16,
+        fontSize: 16.sp,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
       titleLarge: GoogleFonts.poppins(
-        fontSize: 16,
+        fontSize: 16.sp,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      titleMedium: GoogleFonts.inter(
-        fontSize: 14,
+      titleMedium: GoogleFonts.poppins(
+        fontSize: 14.sp,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      titleSmall: GoogleFonts.inter(
-        fontSize: 12,
+      titleSmall: GoogleFonts.poppins(
+        fontSize: 12.sp,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      bodyLarge: GoogleFonts.inter(
-        fontSize: 14,
+      bodyLarge: GoogleFonts.poppins(
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
         color: primary,
       ),
-      bodyMedium: GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        color: secondary,
-      ),
-      bodySmall: GoogleFonts.inter(
-        fontSize: 12,
+      bodyMedium: GoogleFonts.poppins(
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
         color: secondary,
       ),
-      labelLarge: GoogleFonts.inter(
-        fontSize: 14,
+      bodySmall: GoogleFonts.poppins(
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+        color: secondary,
+      ),
+      labelLarge: GoogleFonts.poppins(
+        fontSize: 14.sp,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      labelMedium: GoogleFonts.inter(
-        fontSize: 12,
+      labelMedium: GoogleFonts.poppins(
+        fontSize: 12.sp,
         fontWeight: FontWeight.w500,
         color: secondary,
       ),
-      labelSmall: GoogleFonts.inter(
-        fontSize: 12,
+      labelSmall: GoogleFonts.poppins(
+        fontSize: 12.sp,
         fontWeight: FontWeight.w400,
         color: secondary,
       ),

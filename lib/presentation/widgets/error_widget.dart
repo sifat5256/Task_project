@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppErrorWidget extends StatelessWidget {
   final String message;
@@ -18,12 +19,12 @@ class AppErrorWidget extends StatelessWidget {
     return Center(
       child: ShakeX(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(24.w),
           child: Container(
-            padding: const EdgeInsets.all(32),
+            padding: EdgeInsets.all(32.w),
             decoration: BoxDecoration(
               color: colorScheme.error.withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(24.r),
               border: Border.all(
                 color: colorScheme.error.withValues(alpha: 0.2),
               ),
@@ -36,11 +37,11 @@ class AppErrorWidget extends StatelessWidget {
                   duration: const Duration(seconds: 2),
                   child: Icon(
                     Icons.warning_amber_rounded,
-                    size: 64,
+                    size: 64.sp,
                     color: colorScheme.error,
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Text(
                   message,
                   textAlign: TextAlign.center,
@@ -48,7 +49,7 @@ class AppErrorWidget extends StatelessWidget {
                         color: colorScheme.error,
                       ),
                 ),
-                const SizedBox(height: 24),
+                SizedBox(height: 24.h),
                 OutlinedButton.icon(
                   onPressed: onRetry,
                   icon: const Icon(Icons.refresh),
@@ -57,11 +58,11 @@ class AppErrorWidget extends StatelessWidget {
                     foregroundColor: colorScheme.error,
                     side: BorderSide(color: colorScheme.error),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(12.r),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 12,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 24.w,
+                      vertical: 12.h,
                     ),
                   ),
                 ),

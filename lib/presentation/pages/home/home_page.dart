@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_project/core/theme/app_theme.dart';
 import 'package:task_project/presentation/controllers/home_controller.dart';
@@ -33,15 +34,15 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: Obx(
         () => Container(
           margin: EdgeInsets.fromLTRB(
-            16, 0, 16, 16 + MediaQuery.of(context).padding.bottom,
+            16.w, 0, 16.w, 16.h + MediaQuery.of(context).padding.bottom,
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppTheme.radiusXL),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.08),
-                blurRadius: 24,
-                offset: const Offset(0, 8),
+                blurRadius: 24.r,
+                offset: Offset(0, 8.h),
               ),
             ],
           ),
@@ -50,8 +51,7 @@ class HomePage extends StatelessWidget {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
                 decoration: BoxDecoration(
                   color: colorScheme.surface.withValues(alpha: 0.85),
                   borderRadius: BorderRadius.circular(AppTheme.radiusXL),
@@ -128,12 +128,12 @@ class _NavItem extends StatelessWidget {
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeInOut,
         padding: EdgeInsets.symmetric(
-          horizontal: isActive ? 16 : 12,
-          vertical: 8,
+          horizontal: isActive ? 16.w : 12.w,
+          vertical: 8.h,
         ),
         decoration: BoxDecoration(
           color: isActive ? color.withValues(alpha: 0.1) : Colors.transparent,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -144,7 +144,7 @@ class _NavItem extends StatelessWidget {
               child: Icon(
                 isActive ? activeIcon : icon,
                 color: isActive ? color : inactiveColor,
-                size: 24,
+                size: 24.sp,
               ),
             ),
             AnimatedSize(
@@ -152,13 +152,13 @@ class _NavItem extends StatelessWidget {
               curve: Curves.easeInOut,
               child: isActive
                   ? Padding(
-                      padding: const EdgeInsets.only(left: 8),
+                      padding: EdgeInsets.only(left: 8.w),
                       child: Text(
                         label,
                         style: TextStyle(
                           color: color,
                           fontWeight: FontWeight.w600,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                         ),
                       ),
                     )

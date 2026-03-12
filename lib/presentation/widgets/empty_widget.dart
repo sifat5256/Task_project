@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmptyWidget extends StatelessWidget {
   final String message;
@@ -22,31 +23,31 @@ class EmptyWidget extends StatelessWidget {
     return Center(
       child: ElasticIn(
         child: Padding(
-          padding: const EdgeInsets.all(32),
+          padding: EdgeInsets.all(32.w),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 120,
-                height: 120,
+                width: 120.w,
+                height: 120.w,
                 decoration: BoxDecoration(
                   color: colorScheme.primary.withValues(alpha: 0.08),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   icon,
-                  size: 56,
+                  size: 56.sp,
                   color: colorScheme.primary.withValues(alpha: 0.5),
                 ),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
               Text(
                 message,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               if (subtitle != null) ...[
-                const SizedBox(height: 8),
+                SizedBox(height: 8.h),
                 Text(
                   subtitle!,
                   textAlign: TextAlign.center,
@@ -54,18 +55,18 @@ class EmptyWidget extends StatelessWidget {
                 ),
               ],
               if (onRetry != null) ...[
-                const SizedBox(height: 24),
+                SizedBox(height: 24.h),
                 OutlinedButton.icon(
                   onPressed: onRetry,
                   icon: const Icon(Icons.refresh),
                   label: const Text('Retry'),
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(12.r),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 12,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 24.w,
+                      vertical: 12.h,
                     ),
                   ),
                 ),

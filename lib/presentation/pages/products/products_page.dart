@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_project/app/routes/app_routes.dart';
 import 'package:task_project/core/theme/app_theme.dart';
@@ -55,7 +56,7 @@ class ProductsPage extends StatelessWidget {
           onRefresh: controller.fetchProducts,
           child: ListView.builder(
             controller: controller.scrollController,
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
+            padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 100.h),
             itemCount: controller.products.length + 1,
             itemBuilder: (context, index) {
               if (index == controller.products.length) {
@@ -114,7 +115,7 @@ class _ProductCardState extends State<_ProductCard> {
         scale: _pressed ? 0.97 : 1.0,
         duration: const Duration(milliseconds: 150),
         child: Container(
-          margin: const EdgeInsets.only(bottom: 16),
+          margin: EdgeInsets.only(bottom: 16.h),
           decoration: BoxDecoration(
             color: colorScheme.surface,
             borderRadius: BorderRadius.circular(AppTheme.radiusLarge),
@@ -128,7 +129,7 @@ class _ProductCardState extends State<_ProductCard> {
             children: [
               // Image section
               ClipRRect(
-                borderRadius: const BorderRadius.vertical(
+                borderRadius: BorderRadius.vertical(
                   top: Radius.circular(AppTheme.radiusLarge),
                 ),
                 child: Stack(
@@ -145,7 +146,7 @@ class _ProductCardState extends State<_ProductCard> {
                           ),
                           errorWidget: (_, __, ___) => Container(
                             color: colorScheme.surfaceContainerHighest,
-                            child: const Icon(Icons.broken_image, size: 32),
+                            child: Icon(Icons.broken_image, size: 32.sp),
                           ),
                         ),
                       ),
@@ -167,30 +168,30 @@ class _ProductCardState extends State<_ProductCard> {
                     ),
                     // Price badge
                     Positioned(
-                      bottom: 12,
-                      right: 12,
+                      bottom: 12.h,
+                      right: 12.w,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12.r),
                         child: BackdropFilter(
                           filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                           child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 6,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12.w,
+                              vertical: 6.h,
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white.withValues(alpha: 0.2),
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(12.r),
                               border: Border.all(
                                 color: Colors.white.withValues(alpha: 0.3),
                               ),
                             ),
                             child: Text(
                               '\$${widget.product.price.toStringAsFixed(2)}',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                               ),
                             ),
                           ),
@@ -202,7 +203,7 @@ class _ProductCardState extends State<_ProductCard> {
               ),
               // Info section
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(16.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -212,7 +213,7 @@ class _ProductCardState extends State<_ProductCard> {
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4.h),
                     if (widget.product.brand.isNotEmpty)
                       Text(
                         widget.product.brand,
@@ -242,7 +243,7 @@ class _BottomLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     if (hasReachedMax) {
       return Padding(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(24.w),
         child: Center(
           child: Text(
             'All products loaded',
@@ -253,9 +254,9 @@ class _BottomLoader extends StatelessWidget {
     }
 
     if (isPaginating) {
-      return const Padding(
-        padding: EdgeInsets.all(24),
-        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      return Padding(
+        padding: EdgeInsets.all(24.w),
+        child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
       );
     }
 

@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_project/core/theme/app_theme.dart';
@@ -25,41 +26,41 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FadeInDown(
                   duration: const Duration(milliseconds: 400),
                   child: Container(
-                    width: 80,
-                    height: 80,
+                    width: 80.w,
+                    height: 80.w,
                     decoration: BoxDecoration(
                       gradient: AppTheme.primaryGradient,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(20.r),
                       boxShadow: [AppTheme.primaryGlow],
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.lock_outline_rounded,
-                      size: 40,
+                      size: 40.sp,
                       color: Colors.white,
                     ),
                   ),
                 ),
-                const SizedBox(height: 32),
+                SizedBox(height: 32.h),
                 FadeInDown(
                   delay: const Duration(milliseconds: 100),
                   duration: const Duration(milliseconds: 400),
                   child: Text(
                     'Welcome Back',
                     style: GoogleFonts.poppins(
-                      fontSize: 28,
+                      fontSize: 28.sp,
                       fontWeight: FontWeight.w700,
                       color: colorScheme.onSurface,
                     ),
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8.h),
                 FadeInDown(
                   delay: const Duration(milliseconds: 150),
                   duration: const Duration(milliseconds: 400),
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
-                const SizedBox(height: 48),
+                SizedBox(height: 48.h),
                 FadeInUp(
                   delay: const Duration(milliseconds: 200),
                   duration: const Duration(milliseconds: 400),
@@ -84,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 FadeInUp(
                   delay: const Duration(milliseconds: 300),
                   duration: const Duration(milliseconds: 400),
@@ -122,16 +123,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Obx(() {
                   final error = controller.errorMessage.value;
-                  if (error.isEmpty) return const SizedBox(height: 8);
+                  if (error.isEmpty) return SizedBox(height: 8.h);
                   return ShakeX(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 16),
+                      padding: EdgeInsets.only(top: 16.h),
                       child: Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(12),
+                        padding: EdgeInsets.all(12.w),
                         decoration: BoxDecoration(
                           color: colorScheme.error.withValues(alpha: 0.08),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                           border: Border.all(
                             color: colorScheme.error.withValues(alpha: 0.2),
                           ),
@@ -139,14 +140,14 @@ class _LoginPageState extends State<LoginPage> {
                         child: Row(
                           children: [
                             Icon(Icons.error_outline,
-                                size: 20, color: colorScheme.error),
-                            const SizedBox(width: 8),
+                                size: 20.sp, color: colorScheme.error),
+                            SizedBox(width: 8.w),
                             Expanded(
                               child: Text(
                                 error,
                                 style: TextStyle(
                                   color: colorScheme.error,
-                                  fontSize: 13,
+                                  fontSize: 13.sp,
                                 ),
                               ),
                             ),
@@ -156,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   );
                 }),
-                const SizedBox(height: 32),
+                SizedBox(height: 32.h),
                 FadeInUp(
                   delay: const Duration(milliseconds: 400),
                   duration: const Duration(milliseconds: 400),
