@@ -1,16 +1,46 @@
-# task_project
+# Task Project
 
-A new Flutter project.
+A Flutter mobile app built with **GetX** and **Clean Architecture** for the Taghyeer Technologies technical assignment. Consumes the [DummyJSON API](https://dummyjson.com).
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- User authentication (login, cached session, auto-login, logout)
+- Products listing with pagination
+- Posts listing with pagination
+- Product & Post detail screens
+- Light/Dark theme toggle (persisted)
+- Shimmer loading skeletons, error & empty states
 
-A few resources to get you started if this is your first Flutter project:
+## Architecture
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+lib/
+  core/         # Theme, network, storage, constants, errors
+  data/         # Models, data sources (remote/local), repository implementations
+  domain/       # Entities, repository contracts, use cases
+  presentation/ # Controllers, bindings, pages, widgets
+  di/           # Dependency injection
+  app/          # App entry, routes
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech Stack
+
+- **State Management:** GetX
+- **HTTP Client:** Dio
+- **Error Handling:** dartz (Either<Failure, T>)
+- **Local Storage:** SharedPreferences
+- **Responsive:** flutter_screenutil
+- **UI:** Google Fonts (Poppins), animate_do, shimmer, cached_network_image
+
+## Setup
+
+```bash
+flutter pub get
+flutter run
+```
+
+## Test Credentials
+
+
+- **Username:** emilys
+- **Password:** emilyspass
