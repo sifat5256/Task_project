@@ -34,15 +34,12 @@ class _GradientButtonState extends State<GradientButton> {
       child: AnimatedScale(
         scale: _pressed ? 0.95 : 1.0,
         duration: const Duration(milliseconds: 100),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          width: widget.isLoading ? 56.w : double.infinity,
+        child: Container(
+          width: double.infinity,
           height: 56.h,
           decoration: BoxDecoration(
             gradient: AppTheme.primaryGradient,
-            borderRadius: BorderRadius.circular(
-              widget.isLoading ? 28.r : AppTheme.radiusLarge,
-            ),
+            borderRadius: BorderRadius.circular(AppTheme.radiusLarge),
             boxShadow: [AppTheme.primaryGlow],
           ),
           child: Center(

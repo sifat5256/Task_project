@@ -17,8 +17,8 @@ class AuthController extends GetxController {
     this._getCachedUserUseCase,
   );
 
-  late final TextEditingController usernameController;
-  late final TextEditingController passwordController;
+  late TextEditingController usernameController;
+  late TextEditingController passwordController;
 
   final isLoading = false.obs;
   final errorMessage = ''.obs;
@@ -40,11 +40,10 @@ class AuthController extends GetxController {
     );
   }
 
-  @override
-  void onClose() {
-    usernameController.dispose();
-    passwordController.dispose();
-    super.onClose();
+  void resetFields() {
+    usernameController.clear();
+    passwordController.clear();
+    errorMessage.value = '';
   }
 
   Future<void> login() async {
@@ -56,6 +55,7 @@ class AuthController extends GetxController {
       return;
     }
 
+    FocusManager.instance.primaryFocus?.unfocus();
     errorMessage.value = '';
     isLoading.value = true;
 

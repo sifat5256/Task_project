@@ -12,19 +12,22 @@ import 'package:task_project/presentation/controllers/product_controller.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HomeController>(() => HomeController());
+    Get.lazyPut<HomeController>(() => HomeController(), fenix: true);
     Get.lazyPut<AuthController>(
       () => AuthController(
         Get.find<LoginUseCase>(),
         Get.find<LogoutUseCase>(),
         Get.find<GetCachedUserUseCase>(),
       ),
+      fenix: true,
     );
     Get.lazyPut<ProductController>(
       () => ProductController(Get.find<GetProductsUseCase>()),
+      fenix: true,
     );
     Get.lazyPut<PostController>(
       () => PostController(Get.find<GetPostsUseCase>()),
+      fenix: true,
     );
   }
 }

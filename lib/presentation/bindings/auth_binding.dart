@@ -13,6 +13,7 @@ class AuthBinding extends Bindings {
         Get.find<LogoutUseCase>(),
         Get.find<GetCachedUserUseCase>(),
       ),
+      fenix: true,
     );
   }
 }
